@@ -2,6 +2,10 @@
 const gameContainer = document.querySelector("#game-container");
 const statusText = document.querySelector("#status");
 const restartBtn = document.querySelector("#reset");
+const startGameBtn = document.querySelector("#start");
+const statusContainer = document.querySelector("#status-container");
+const helloContainer = document.querySelector("#hello-container");
+
 // create variables for the game
 let player = "X";
 let gameBoard = ["", "", "", "", "", "", "", "", ""];
@@ -15,6 +19,14 @@ const winConditions = [
    [0, 4, 8],
    [2, 4, 6],
 ];
+
+// start game
+startGameBtn.addEventListener("click", () => {
+   gameContainer.classList.remove("hide");
+   statusContainer.classList.remove("hide");
+   helloContainer.classList.add("hide");
+   startGame();
+});
 
 // create game window of 3x3 grid
 function createGame() {
@@ -109,4 +121,4 @@ restartBtn.addEventListener("click", () => {
    location.reload();
 });
 
-startGame();
+// startGame();
