@@ -1,72 +1,100 @@
-// select game container to append game cells
+// select elements for the DOM
 const gameContainer = document.querySelector("#game-container");
+const statusText = document.querySelector("#status");
+const restartBtn = document.querySelector("#reset");
+// create variables for the game
+let player = "X";
+let gameBoard = ["", "", "", "", "", "", "", "", ""];
+const winConditions = [
+   [0, 1, 2],
+   [3, 4, 5],
+   [6, 7, 8],
+   [0, 3, 6],
+   [1, 4, 7],
+   [2, 5, 8],
+   [0, 4, 8],
+   [2, 4, 6],
+];
 
-// create game board 3x3
-// gameboard is an array of 9 elements
-// each element is a div
-// each div has an id
-// each div has a class
-function gameBoard() {
-   const board = ["", "", "", "", "", "", "", "", ""];
-   // create 9 divs of cells inside of game container
+// create game window
+function createGame() {
    for (let i = 0; i < 9; i++) {
       const cell = document.createElement("div");
       cell.setAttribute("id", `${i}`);
       cell.setAttribute("class", "cell");
       gameContainer.appendChild(cell);
-      //   board.push(i);
-      //   board.push(`id:${i}`);
    }
-
-   return board;
-
-   // console.log(board)
 }
 
-// generate gameboard on page load
-const getGameBoard = gameBoard();
+createGame();
 
-// console.log(cells)
-console.log(getGameBoard);
-
-// create click event listener for each cell
-function clickCell() {
-   // player 1 value is X
-   const player1 = "X";
-   // player 2 value is O
-   const player2 = "O";
-   // playing value
-   let playingValue = player1;
-
-   // select all created celss
+// initialize game
+function startGame() {
+   // select all created cells
    const cells = document.querySelectorAll(".cell");
-   // create click event listener for each cell
+   // add click event listener to each cell to get values
    cells.forEach((cell) =>
       cell.addEventListener("click", (e) => {
-         // change cell value on click
-         const cellValue = e.target;
-         //  console.log(cellValue.id);
-
-         //  disable to click on same cell twice
-         cellValue.classList.add("clicked");
-         //  change cell value to playing value
-         cellValue.innerHTML = playingValue;
-         getGameBoard[cellValue.id] = cellValue.id;
-         //  board.push(cellValue);
-
-         //  change X to O or vice versa
-         playingValue = playingValue === player1 ? player2 : player1;
-
-         //  console.log(cellValue);
-         console.log(getGameBoard);
-         //  console.log(getGameBoard);
+         const cellIndex = e.target.id;
+         // add class to cell to prevent clicking again
+         cell.classList.add("clicked");
+         // update cells with functions
+         updateCell(cellIndex);
+         statusText.textContent = `${player}'s turn`;
+         checkWinner();
       })
    );
 }
 
-clickCell();
-// const cells = document.querySelectorAll(".cell");
+// checks who wins the game
+function checkWinner() {
+   let roundWon = false;
+   // compare each win condition with game board
+   for (let i = 0; i < winConditions.length; i++) {
+      const condition = winConditions[i];
+      const cellA = gameBoard[condition[0]];
+      const cellB = gameBoard[condition[1]];
+      const cellC = gameBoard[condition[2]];
+      // if any of the cells are empty, continue
+      if (cellA == "" || cellB == "" || cellC == "") {
+         continue;
+      }
+      // if all cells are equal, round is won
+      if (cellA == cellB && cellB == cellC) {
+         roundWon = true;
+         break;
+      }
+   }
+   // if round is won, display winner
+   if (roundWon) {
+      statusText.textContent = `${player} wins!`;
+      // disable pointer events on game container
+      gameContainer.classList.add("game-over");
+      // if round is not won, check if game is a draw
+   } else if (!gameBoard.includes("")) {
+      statusText.textContent = `Draw!`;
+      // else change player
+   } else {
+      changePlayer();
+   }
+}
 
-// cells.forEach(cell => cell.addEventListener("click", e => {
-//     console.log(e.target.id, ` was clicked`)
-// }));
+function updateCell(cellIndex) {
+   // update game board when cell is clicked
+   gameBoard[cellIndex] = player;
+   const cell = document.getElementById(cellIndex);
+   cell.textContent = player;
+}
+
+// after each turn change player
+function changePlayer() {
+   player = player == "X" ? "O" : "X";
+   statusText.textContent = `${player}'s turn`;
+}
+
+// restart game
+restartBtn.addEventListener("click", () => {
+   location.reload();
+});
+
+startGame();

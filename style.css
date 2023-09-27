@@ -178,3 +178,19 @@ body {
    /* cursor: no-drop; */
    pointer-events: none;
 }
+
+#status-container {
+   text-align: center;
+   margin-top: 20px;
+}
+
+button {
+   height: 30px;
+   width: 160px;
+   margin: 20px;
+   font-size: 20px;
+}
+
+.game-over {
+   pointer-events: none;
+}
