@@ -16,12 +16,16 @@ const winConditions = [
    [2, 4, 6],
 ];
 
-// create game window
+// create game window of 3x3 grid
 function createGame() {
    for (let i = 0; i < 9; i++) {
+      // create div for each cell
       const cell = document.createElement("div");
+      // set attributes for each cell
       cell.setAttribute("id", `${i}`);
+      // add class to each cell
       cell.setAttribute("class", "cell");
+      // append each cell to game container
       gameContainer.appendChild(cell);
    }
 }
