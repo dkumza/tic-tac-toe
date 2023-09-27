@@ -7,14 +7,15 @@ const gameContainer = document.querySelector("#game-container");
 // each div has an id
 // each div has a class
 function gameBoard() {
-   const board = [];
+   const board = ["", "", "", "", "", "", "", "", ""];
    // create 9 divs of cells inside of game container
    for (let i = 0; i < 9; i++) {
       const cell = document.createElement("div");
       cell.setAttribute("id", `${i}`);
       cell.setAttribute("class", "cell");
       gameContainer.appendChild(cell);
-      board.push(i);
+      //   board.push(i);
+      //   board.push(`id:${i}`);
    }
 
    return board;
@@ -42,17 +43,22 @@ function clickCell() {
    // create click event listener for each cell
    cells.forEach((cell) =>
       cell.addEventListener("click", (e) => {
-         // console.log(e.target.id, ` was clicked`);
          // change cell value on click
          const cellValue = e.target;
+         //  console.log(cellValue.id);
+
          //  disable to click on same cell twice
          cellValue.classList.add("clicked");
          //  change cell value to playing value
          cellValue.innerHTML = playingValue;
+         getGameBoard[cellValue.id] = cellValue.id;
+         //  board.push(cellValue);
+
          //  change X to O or vice versa
          playingValue = playingValue === player1 ? player2 : player1;
 
-         console.log(cellValue);
+         //  console.log(cellValue);
+         console.log(getGameBoard);
          //  console.log(getGameBoard);
       })
    );

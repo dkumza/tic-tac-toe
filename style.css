@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -136,12 +138,16 @@ table {
 
 /* css */
 
+body {
+   font-family: "Press Start 2P", cursive;
+}
+
 #top-container {
    text-align: center;
 }
 
 #top-container h1 {
-   font-size: 60px;
+   font-size: 40px;
    margin: 20px;
 }
 
