@@ -65,18 +65,26 @@ function checkWinner() {
       }
       // if all cells are equal, round is won
       if (cellA == cellB && cellB == cellC) {
+         // select all cells with win condition and change background color to green
+         for (let i = 0; i < condition.length; i++) {
+            const cell = document.getElementById(condition[i]);
+            cell.classList.add("win");
+         }
          roundWon = true;
          break;
       }
    }
    // if round is won, display winner
    if (roundWon) {
-      statusText.textContent = `${player} wins!`;
+      statusText.textContent = `Congratulations, ${player} wins!`;
       // disable pointer events on game container
       gameContainer.classList.add("game-over");
       // if round is not won, check if game is a draw
    } else if (!gameBoard.includes("")) {
-      statusText.textContent = `Draw!`;
+      // select all cells and change background color to yellow
+      const cells = document.querySelectorAll(".cell");
+      cells.forEach((cell) => cell.classList.add("draw"));
+      statusText.textContent = `Game is Draw!`;
       // else change player
    } else {
       changePlayer();

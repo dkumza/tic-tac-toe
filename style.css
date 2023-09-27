@@ -189,3 +189,11 @@ button {
 .game-over {
    pointer-events: none;
 }
+
+.win {
+   background-color: #aff3b1;
+}
+
+.draw {
+   background-color: #f3e9af;
+}
