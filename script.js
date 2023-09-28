@@ -21,12 +21,14 @@ const winConditions = [
 ];
 
 // start game
-startGameBtn.addEventListener("click", () => {
-   gameContainer.classList.remove("hide");
-   statusContainer.classList.remove("hide");
-   helloContainer.classList.add("hide");
-   startGame();
-});
+// startGameBtn.addEventListener("click", (e) => {
+//    e.preventDefault();
+//    gameContainer.classList.remove("hide");
+//    statusContainer.classList.remove("hide");
+//    helloContainer.classList.add("hide");
+//    startGame();
+// });
+startGame();
 
 // create game window of 3x3 grid
 function createGame() {
@@ -42,10 +44,9 @@ function createGame() {
    }
 }
 
-createGame();
-
 // initialize game
 function startGame() {
+   createGame();
    // select all created cells
    const cells = document.querySelectorAll(".cell");
    // add click event listener to each cell to get values
@@ -78,10 +79,7 @@ function checkWinner() {
       // if all cells are equal, round is won
       if (cellA == cellB && cellB == cellC) {
          // select all cells with win condition and change background color to green
-         for (let i = 0; i < condition.length; i++) {
-            const cell = document.getElementById(condition[i]);
-            cell.classList.add("win");
-         }
+         winColor(condition);
          roundWon = true;
          break;
       }
@@ -94,8 +92,7 @@ function checkWinner() {
       // if round is not won, check if game is a draw
    } else if (!gameBoard.includes("")) {
       // select all cells and change background color to yellow
-      const cells = document.querySelectorAll(".cell");
-      cells.forEach((cell) => cell.classList.add("draw"));
+      drawColor();
       statusText.textContent = `Game is Draw!`;
       // else change player
    } else {
@@ -121,4 +118,16 @@ restartBtn.addEventListener("click", () => {
    location.reload();
 });
 
-// startGame();
+// function for win condition to change background color
+function winColor(condition) {
+   for (let i = 0; i < condition.length; i++) {
+      const cell = document.getElementById(condition[i]);
+      cell.classList.add("win");
+   }
+}
+
+// funtion for draw condition to change background color
+function drawColor() {
+   const cells = document.querySelectorAll(".cell");
+   cells.forEach((cell) => cell.classList.add("draw"));
+}
