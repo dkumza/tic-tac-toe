@@ -22,7 +22,7 @@
             <!-- status container: -->
             <div id="status-container" class="">
                <!-- which turn is -->
-               <h2 id="status"></h2>
+               <!-- <h2 id="status"></h2> -->
                <!-- reset button -->
             </div>
          </div>
@@ -30,9 +30,10 @@
             <div id="game-info">
                <h1>GAME INFO: Best of 3</h1>
                <div id="turn-wrap">
-                  <h2 class="turn">
-                     Current turn: <span id="turn-check">user/computer</span>
+                  <h2 id="status" class="turn">
+                     <span id="turn-check"></span> plays with - X
                   </h2>
+                  <h2 class="pc-value">Computer plays with - O</h2>
                </div>
                <div id="round-wrap">
                   <h2 class="round-text">
@@ -40,11 +41,16 @@
                   </h2>
                </div>
                <div id="points-wrap">
-                  <h2 class="user-points">User points: 0</h2>
-                  <h2 class="pc-points">Computer points: 0</h2>
+                  <h2 class="user-points">
+                     Your points: <span id="user-points">0</span>
+                  </h2>
+                  <h2 class="pc-points">
+                     Computer points: <span id="pc-points">0</span>
+                  </h2>
                </div>
                <div id="btn-wrap">
-                  <button id="reset">Reset Game</button>
+                  <button id="reset" class="hide">Next Round</button>
+                  <!-- <p>Back to main page:</p> -->
                   <button id="new-game">New Game</button>
                </div>
             </div>

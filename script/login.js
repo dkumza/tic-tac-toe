@@ -13,6 +13,8 @@ playBtn.addEventListener("click", (e) => {
       nickname = nicknameField.value;
       localStorage.setItem("nickname", nickname);
       window.location.href = "./pages/game.html";
+      //   reset input value
+      nicknameField.value = "";
    }
 });
 
