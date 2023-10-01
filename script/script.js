@@ -107,10 +107,14 @@ function checkWinner() {
    // if round is won, display winner
    if (roundWon) {
       if (player == "X") {
-         statusText.textContent = `Congratulations, ${nickname} wins!`;
+         // statusText.textContent = `Congratulations, ${nickname} wins!`;
+
+         nextRoundBtn.classList.remove("hide");
          checkGameStatus();
       } else {
-         statusText.textContent = `Computer wins!`;
+         // statusText.textContent = `Computer wins!`;
+
+         nextRoundBtn.classList.remove("hide");
          checkGameStatus();
       }
       // disable pointer events on game container
@@ -120,7 +124,7 @@ function checkWinner() {
       // select all cells and change background color to yellow
       drawColor();
       statusText.textContent = `Game is Draw!`;
-      nextRoundBtn.classList.remove("hide");
+      // nextRoundBtn.classList.remove("hide");
       // else change player
    } else {
       changePlayer();
@@ -154,7 +158,8 @@ newGameBtn.addEventListener("click", () => {
 
 // restart game
 nextRoundBtn.addEventListener("click", () => {
-   console.log("clicked");
+   nextRoundBtn.classList.add("hide");
+   // console.log("clicked");
    startRound();
 });
 
@@ -170,10 +175,12 @@ function winColor(condition) {
 function drawColor() {
    const cells = document.querySelectorAll(".cell");
    cells.forEach((cell) => cell.classList.add("draw"));
+   nextRoundBtn.classList.remove("hide");
 }
 
 // reset startRound function
 function startRound() {
+   // nextRoundBtn.classList.add("hide");
    countRounds();
    // reset game board
    gameBoard = ["", "", "", "", "", "", "", "", ""];
@@ -209,7 +216,7 @@ function computerPlay() {
 function countRounds() {
    round++;
    roundCount.textContent = `${round}`;
-   console.log(roundCount.textContent);
+   // console.log(roundCount.textContent);
    //
 }
 
@@ -219,11 +226,11 @@ function countPoints() {
       playerData.score++;
       playerScore.textContent = `${playerData.score}`;
       // show next round button
-      nextRoundBtn.classList.remove("hide");
+      // nextRoundBtn.classList.remove("hide");
    } else {
       computerData.score++;
       computerScore.textContent = `${computerData.score}`;
-      computerVal.classList.add("hide");
+      // computerVal.classList.add("hide");
    }
 }
 
