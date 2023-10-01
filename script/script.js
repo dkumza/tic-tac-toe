@@ -1,3 +1,7 @@
+// get nickname from local storage
+const nickname = localStorage.getItem("nickname");
+console.log(nickname);
+
 // select elements for the DOM
 const gameContainer = document.querySelector("#game-container");
 const statusText = document.querySelector("#status");
