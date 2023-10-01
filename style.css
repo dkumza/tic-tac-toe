@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -139,8 +139,22 @@ table {
 /* css */
 
 body {
-   font-family: "Rubik", sans-serif;
-   font-size: 30px;
+   font-family: "Inter", sans-serif;
+   text-align: center;
+   font-size: 16px;
+}
+
+#main-container {
+   margin: 60px auto;
+   padding: 30px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   border: 1px solid #98b3cf;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+   width: 500px;
+   /* height: 400px; */
 }
 
 #top-container {
@@ -148,8 +162,15 @@ body {
 }
 
 #top-container h1 {
-   font-size: 60px;
-   margin: 20px;
+   font-size: 3rem;
+   font-weight: 700;
+}
+#game {
+   margin: 0 auto;
+   display: flex;
+   padding: 20px;
+   justify-content: center;
+   align-items: center;
 }
 
 #game-container {
@@ -163,7 +184,7 @@ body {
    border: 1px solid black;
    height: 100px;
    width: 100px;
-   /* font-size: 60px; */
+   font-size: 2rem;
    display: inline-flex;
    justify-content: center;
    align-items: center;
@@ -174,16 +195,26 @@ body {
    pointer-events: none;
 }
 
-#status-container {
-   text-align: center;
-   margin-top: 20px;
+#status {
+   margin-bottom: 20px;
+   font-size: 1.5rem;
+   font-weight: 600;
 }
 
 button {
-   height: 30px;
+   background-color: #074a71;
+   color: white;
+   padding: 10px 20px;
+   border: 1px solid #98b3cf;
+   cursor: pointer;
+   font-size: 1rem;
+   font-weight: 600;
+   text-transform: uppercase;
    width: 160px;
-   margin: 20px;
-   font-size: 20px;
+}
+button:hover {
+   background-color: #98b3cf;
+   color: #074a71;
 }
 
 .game-over {
@@ -198,19 +229,22 @@ button {
    background-color: #f3e9af;
 }
 
-#hello-container {
+#round-wrap {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+   margin-bottom: 20px;
+}
+
+/* #hello-container {
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   /* display: none; */
-}
+} */
 
-#hello-container p {
-   font-size: 20px;
-   margin: 20px;
-}
-
-.hide {
+/* .hide {
    display: none !important;
-}
+} */

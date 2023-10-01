@@ -8,18 +8,27 @@
       <script src="script.js" defer></script>
    </head>
    <body>
-      <!-- title container + some <p> later if needed -->
-      <div id="top-container">
-         <h1>TIC TAC TOE</h1>
-      </div>
-      <!-- game board is created in this container: -->
-      <div id="game-container" class=""></div>
-      <!-- status container: -->
-      <div id="status-container" class="">
-         <!-- which turn is -->
-         <h2 id="status">X's Turn</h2>
-         <!-- reset button -->
-         <button id="reset">Reset Game</button>
+      <div id="main-container">
+         <!-- title container + some <p> later if needed -->
+         <div id="top-container">
+            <h1>TIC TAC TOE</h1>
+         </div>
+         <!-- game board is created in this container: -->
+         <div id="game">
+            <div id="game-container" class=""></div>
+         </div>
+
+         <!-- status container: -->
+         <div id="status-container" class="">
+            <div id="round-wrap">
+               <h2 id="round">Round: 1 of 3</h2>
+               <h2 id="points">Current points: 0</h2>
+            </div>
+            <!-- which turn is -->
+            <h2 id="status">X's Turn</h2>
+            <!-- reset button -->
+            <button id="reset">Reset Game</button>
+         </div>
       </div>
    </body>
 </html>
