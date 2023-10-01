@@ -12,15 +12,15 @@ Game is created on the front-end, with simple logic:
 
 TODO:
 
- - [ ] add log in page with posibility to enter username or usernames (now i'll stick with one user):
+ - [x] add log in page with posibility to enter username or usernames (now i'll stick with one user):
 	 - [ ] later:
 		 - [ ] need to learn socke.io library
 		 - [ ] with posibility to play 1x1
 		 - [ ] and live chat
 		 
-  - [ ] add "AI" logic to play player vs "AI"
- - [ ] add game rounds - best of 3:
+  - [x] add "AI" logic to play player vs "AI"
+ - [x] add game rounds - best of 3:
 
  
-	 - [ ] best of 3 is winner
+	 - [x] best of 3 is winner
 
