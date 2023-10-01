@@ -148,13 +148,17 @@ body {
    margin: 60px auto;
    padding: 30px;
    display: flex;
-   flex-direction: column;
+   /* flex-direction: column; */
    justify-content: center;
    align-items: center;
    border: 1px solid #98b3cf;
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-   width: 500px;
+   width: 900px;
    /* height: 400px; */
+}
+
+#left-wrap {
+   flex: 1;
 }
 
 #top-container {
@@ -197,7 +201,7 @@ body {
 
 #status {
    margin-bottom: 20px;
-   font-size: 1.5rem;
+   font-size: 1.25rem;
    font-weight: 600;
 }
 
@@ -236,6 +240,53 @@ button:hover {
    align-items: center;
    gap: 10px;
    margin-bottom: 20px;
+}
+
+/* right side - game info */
+#right-wrap {
+   flex: 1;
+}
+
+#game-info > h1 {
+   font-size: 2rem;
+   font-weight: 600;
+}
+
+#turn-wrap {
+   margin: 20px;
+   margin-bottom: 80px;
+}
+
+#turn-check,
+#round-no {
+   font-weight: 600;
+   font-size: 1.5rem;
+}
+
+#points-wrap {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 30px;
+   /* flex-direction: row; */
+}
+
+#btn-wrap {
+   display: flex;
+   justify-content: center;
+   gap: 30px;
+   margin-top: 125px;
+}
+
+.user-points,
+.pc-points {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   border: 1px solid rgb(172, 171, 171);
+   /* background-color: aqua; */
+   width: 180px;
+   height: 40px;
 }
 
 /* #hello-container {

@@ -24,14 +24,15 @@ const winConditions = [
    [2, 4, 6],
 ];
 
+let playerData = {
+   nickname: nickname,
+   score: 0,
+};
+
+let round = 1;
+
 // start game
-// startGameBtn.addEventListener("click", (e) => {
-//    e.preventDefault();
-//    gameContainer.classList.remove("hide");
-//    statusContainer.classList.remove("hide");
-//    helloContainer.classList.add("hide");
-//    startGame();
-// });
+//
 startGame();
 
 // create game window of 3x3 grid
@@ -50,6 +51,8 @@ function createGame() {
 
 // initialize game
 function startGame() {
+   // startRound();
+   statusText.textContent = `${nickname}, press on any cell to start the game!`;
    createGame();
    // select all created cells
    const cells = document.querySelectorAll(".cell");
@@ -57,11 +60,13 @@ function startGame() {
    cells.forEach((cell) =>
       cell.addEventListener("click", (e) => {
          const cellIndex = e.target.id;
+         console.log(player);
+
          // add class to cell to prevent clicking again
          cell.classList.add("clicked");
          // update cells with functions
          updateCell(cellIndex);
-         statusText.textContent = `${player}'s turn`;
+
          checkWinner();
       })
    );
@@ -90,7 +95,11 @@ function checkWinner() {
    }
    // if round is won, display winner
    if (roundWon) {
-      statusText.textContent = `Congratulations, ${player} wins!`;
+      if (player == "X") {
+         statusText.textContent = `Congratulations, ${nickname} wins!`;
+      } else {
+         statusText.textContent = `Computer wins!`;
+      }
       // disable pointer events on game container
       gameContainer.classList.add("game-over");
       // if round is not won, check if game is a draw
@@ -114,7 +123,11 @@ function updateCell(cellIndex) {
 // after each turn change player
 function changePlayer() {
    player = player == "X" ? "O" : "X";
-   statusText.textContent = `${player}'s turn`;
+   if (player == "X") {
+      statusText.textContent = `${nickname}'s turn with - ${player}`;
+   } else {
+      statusText.textContent = `Computer's turn with - ${player}`;
+   }
 }
 
 // restart game
@@ -135,3 +148,13 @@ function drawColor() {
    const cells = document.querySelectorAll(".cell");
    cells.forEach((cell) => cell.classList.add("draw"));
 }
+
+// reset startRound function
+function startRound() {
+   // reset game board
+   gameBoard = ["", "", "", "", "", "", "", "", ""];
+   // reset player
+   player = "X";
+}
+
+// function witch counts rounds
