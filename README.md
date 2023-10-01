@@ -10,6 +10,8 @@ Game is created on the front-end, with simple logic:
  5. if no matches found - game is still going.
  6. if no matches found and gameboard is full with player inputs (X's and O's) - game is draw and you need to restart game
 
+[**Try DEMO**](https://dkumza.github.io/tic-tac-toe/index.html)
+
 TODO:
 
  - [x] add log in page with posibility to enter username or usernames (now i'll stick with one user):
@@ -23,4 +25,3 @@ TODO:
 
  
 	 - [x] best of 3 is winner
-
