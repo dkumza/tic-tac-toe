@@ -120,9 +120,11 @@ function checkWinner() {
       // select all cells and change background color to yellow
       drawColor();
       statusText.textContent = `Game is Draw!`;
+      nextRoundBtn.classList.remove("hide");
       // else change player
    } else {
       changePlayer();
+      // checkGameStatus();
    }
 }
 
@@ -145,7 +147,9 @@ function changePlayer() {
 
 // new game
 newGameBtn.addEventListener("click", () => {
-   window.location.href = "../index.html";
+   // refresh page
+   window.location.reload();
+   // window.location.href = "../index.html";
 });
 
 // restart game
