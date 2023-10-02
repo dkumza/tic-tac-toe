@@ -36,7 +36,7 @@ let playerData = {
 let computerData = {
    score: 0,
 };
-let round = 0;
+let round = 1;
 let gameStatus = "";
 
 // start game
@@ -68,9 +68,6 @@ function startGame() {
    cells.forEach((cell) =>
       cell.addEventListener("click", (e) => {
          const cellIndex = e.target.id;
-         // console.log(cellIndex);
-         // console.log(player);
-
          // add class to cell to prevent clicking again
          cell.classList.add("clicked");
          // update cells with functions
@@ -104,16 +101,13 @@ function checkWinner() {
          break;
       }
    }
+
    // if round is won, display winner
    if (roundWon) {
       if (player == "X") {
-         // statusText.textContent = `Congratulations, ${nickname} wins!`;
-
          nextRoundBtn.classList.remove("hide");
          checkGameStatus();
       } else {
-         // statusText.textContent = `Computer wins!`;
-
          nextRoundBtn.classList.remove("hide");
          checkGameStatus();
       }
@@ -123,12 +117,11 @@ function checkWinner() {
    } else if (!gameBoard.includes("")) {
       // select all cells and change background color to yellow
       drawColor();
+      // hide pc value
+      computerVal.classList.add("hide");
       statusText.textContent = `Game is Draw!`;
-      // nextRoundBtn.classList.remove("hide");
-      // else change player
    } else {
       changePlayer();
-      // checkGameStatus();
    }
 }
 
@@ -153,13 +146,13 @@ function changePlayer() {
 newGameBtn.addEventListener("click", () => {
    // refresh page
    window.location.reload();
-   // window.location.href = "../index.html";
 });
 
 // restart game
 nextRoundBtn.addEventListener("click", () => {
    nextRoundBtn.classList.add("hide");
-   // console.log("clicked");
+   // show pc value
+   computerVal.classList.remove("hide");
    startRound();
 });
 
@@ -180,8 +173,10 @@ function drawColor() {
 
 // reset startRound function
 function startRound() {
-   // nextRoundBtn.classList.add("hide");
    countRounds();
+   // show pc value
+   computerVal.classList.remove("hide");
+   statusText.textContent = `${nickname} plays with - X`;
    // reset game board
    gameBoard = ["", "", "", "", "", "", "", "", ""];
    // reset player
@@ -215,9 +210,8 @@ function computerPlay() {
 // functio to count rounds
 function countRounds() {
    round++;
+   console.log(round);
    roundCount.textContent = `${round}`;
-   // console.log(roundCount.textContent);
-   //
 }
 
 // function to count points
@@ -225,12 +219,9 @@ function countPoints() {
    if (player == "X") {
       playerData.score++;
       playerScore.textContent = `${playerData.score}`;
-      // show next round button
-      // nextRoundBtn.classList.remove("hide");
    } else {
       computerData.score++;
       computerScore.textContent = `${computerData.score}`;
-      // computerVal.classList.add("hide");
    }
 }
 
@@ -241,10 +232,12 @@ function checkGameStatus() {
       gameContainer.classList.add("game-over");
       nextRoundBtn.classList.add("hide");
       computerVal.classList.add("hide");
+      statusContainer.innerHTML = "You Win!";
    } else if (computerData.score == 2) {
       statusText.textContent = `Computer wins the game!`;
       gameContainer.classList.add("game-over");
       nextRoundBtn.classList.add("hide");
-      statusContainer.innerHTML = "Computer Wind!";
+      computerVal.classList.add("hide");
+      statusContainer.innerHTML = "Computer Wins!";
    }
 }
